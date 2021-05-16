@@ -52,7 +52,7 @@ export class Filtro extends React.Component {
       return <ConteinerFiltro>
         <div>
           <label>Filtros</label>
-        <IconImage src={filter_icon} onClick={this.onClickFiltrando}/>
+          <IconImage src={filter_icon} onClick={this.onClickFiltrando}/>
         </div>
         {componenteFiltro}
       </ConteinerFiltro>
