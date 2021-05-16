@@ -7,6 +7,7 @@ const ConteinerCarrinho = styled.div`
     justify-content: space-around;
     border: 2px solid black;
     padding: 10px;
+    margin: 5px;
 `
 
 
