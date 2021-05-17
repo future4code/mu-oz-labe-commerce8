@@ -8,7 +8,6 @@ const BodyApp = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   padding: 10px;
-
 `
 const produtos = [
   {
@@ -19,9 +18,8 @@ const produtos = [
   }
 ]
 
-
 class App extends React.Component {
-
+  
 
 
   render() {

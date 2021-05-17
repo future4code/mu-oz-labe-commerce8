@@ -9,6 +9,7 @@ const ConteinerFiltro = styled.div`
     grid-column: 1/-1;
     border: 2px solid black;
     padding: 10px;
+    margin: 5px;
 `
 const FiltroAberto = styled.div`
   display: flex;
