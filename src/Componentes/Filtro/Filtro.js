@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import filter_icon from '../../img/filter_icon.svg'
 
 const ConteinerFiltro = styled.div`
     display: flex;
@@ -10,23 +11,51 @@ const ConteinerFiltro = styled.div`
     padding: 10px;
     margin: 5px;
 `
+const FiltroAberto = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+const IconImage = styled.img`
+	margin-right: 5px;
+  height: 25px;
+  width: auto;
+`
+const ContainerInput = styled.label`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 8px;
+`
 
 export class Filtro extends React.Component {
-    
+  state = {
+    filtrando: false,
+  };
+  onClickFiltrando = () => {
+    this.setState({
+      filtrando: !this.state.filtrando,
+    });
+  }
     
     render() {
-
-
-      return (
-        <ConteinerFiltro>
-            <h3>Filtro</h3>
-            <label>Valor minimo:<input type="number"/></label>
-            <label>Valor maximo:<input type="number"/></label>
-            <label>Busca por nome:<input type="text"/></label>
-            
-            
-        </ConteinerFiltro>
-      );
+      let componenteFiltro;
+      if (this.state.filtrando) {
+        componenteFiltro = (
+          <FiltroAberto>
+            <ContainerInput>Valor minimo:<input type="number"/></ContainerInput>
+            <ContainerInput>Valor maximo:<input type="number"/></ContainerInput>
+            <ContainerInput>Busca por nome:<input type="text"/></ContainerInput>
+          </FiltroAberto>
+        )
+          
+      }
+      return <ConteinerFiltro>
+        <div>
+          <label>Filtros</label>
+          <IconImage src={filter_icon} onClick={this.onClickFiltrando}/>
+        </div>
+        {componenteFiltro}
+      </ConteinerFiltro>
     }
-}
- 
+  }
