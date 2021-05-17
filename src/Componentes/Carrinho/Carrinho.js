@@ -17,9 +17,7 @@ export class Carrinho extends React.Component {
     render() {
       return (
         <ConteinerCarrinho>
-
-           <h2>Carrinho:</h2>
-           
+           <h2>Carrinho:</h2>           
            <ConteinerProduto>
              <p>1x</p>
              <p>Produto X</p>
