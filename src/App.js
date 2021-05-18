@@ -76,7 +76,8 @@ class App extends React.Component {
         <Filtro/>
         <Produtos
           produto={nossosProdutos}/>
-        <Carrinho/>
+        <Carrinho
+          carrinho={nossosProdutos}/>
       </BodyApp>
     );
   }
