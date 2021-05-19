@@ -57,7 +57,24 @@ const nossosProdutos = [
 
 class App extends React.Component {
   state = {
+
     meuCarrinho: [],
+
+
+    filtroMin: 100,
+    filtroMax: 4000,
+    filtroNome: 'Produto',
+  }
+  onChangeFiltroMin = (event) => {
+    this.setState({filtroMin: event.target.value})
+  }
+
+  onChangeFiltroMax = (event) => {
+    this.setState({filtroMax: event.target.value})
+  }
+
+  onChangeFiltroNome = (event) => {
+    this.setState({filtroNome: event.target.value})
 
   }
 
@@ -93,7 +110,18 @@ class App extends React.Component {
 
     return (
       <BodyApp>
+
         <Filtro/>
+
+
+        <Filtro
+         filtroMin={this.state.filtroMin}
+         filtroMax={this.state.filtroMax}
+         filtroNome={this.state.filtroNome}
+         onChangeFiltroMin={this.onChangeFiltroMin}            
+         onChangeFiltroMax={this.onChangeFiltroMax}            
+         onChangeFiltroNome={this.onChangeFiltroNome}
+        />
 
         <Produtos
           produto={nossosProdutos}
