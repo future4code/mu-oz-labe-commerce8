@@ -9,14 +9,6 @@ const BodyApp = styled.div`
   grid-template-columns: 3fr 1fr;
   padding: 10px;
 `
-const produtos = [
-  {
-    id: 1,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
-    imageUrl: "https://picsum.photos/200/200",
-  }
-]
 
 const nossosProdutos = [
   {
@@ -64,8 +56,22 @@ const nossosProdutos = [
 ]
 
 class App extends React.Component {
-  
+  state = {
+    filtroMin: 100,
+    filtroMax: 4000,
+    filtroNome: 'Produto',
+  }
+  onChangeFiltroMin = (event) => {
+    this.setState({filtroMin: event.target.value})
+  }
 
+  onChangeFiltroMax = (event) => {
+    this.setState({filtroMax: event.target.value})
+  }
+
+  onChangeFiltroNome = (event) => {
+    this.setState({filtroNome: event.target.value})
+  }
 
   render() {
 
@@ -73,7 +79,14 @@ class App extends React.Component {
 
     return (
       <BodyApp>
-        <Filtro/>
+        <Filtro
+         filtroMin={this.state.filtroMin}
+         filtroMax={this.state.filtroMax}
+         filtroNome={this.state.filtroNome}
+         onChangeFiltroMin={this.onChangeFiltroMin}            
+         onChangeFiltroMax={this.onChangeFiltroMax}            
+         onChangeFiltroNome={this.onChangeFiltroNome}
+        />
         <Produtos
           produto={nossosProdutos}/>
         <Carrinho
