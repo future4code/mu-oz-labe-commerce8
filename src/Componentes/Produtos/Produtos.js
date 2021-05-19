@@ -36,31 +36,31 @@ const Footer = styled.div`
 
 export class Produtos extends React.Component {
 
-    render() {
+  render() {
 
-      const listaDeProdutos = this.props.produto.map((produto) =>{
-        return(
-          <ContaierInterno>
-              <Header>
-                <h4>{produto.nome}</h4>
-              </Header>
-              <ProdutoFoto src={produto.foto} alt="Imagem do produto"/>
-              <Footer>
-                <p>R$: {produto.preco}</p>
-                <button>Adicionar ao Carrinho</button>
-              </Footer>
-          </ContaierInterno>
+    const listaDeProdutos = this.props.produto.map((produto) =>{
+      return(
+        <ContaierInterno>
+            <Header>
+              <h4>{produto.nome}</h4>
+            </Header>
+            <ProdutoFoto src={produto.foto} alt="Imagem do produto"/>
+            <Footer>
+              <p>R$: {produto.preco}</p>
+              <button onClick={() => this.props.onClickAddCarrinho(produto.id)}>Adicionar ao Carrinho</button>
+            </Footer>
+        </ContaierInterno>
         )
       })
       
 
-      return (
-        <Header>
-          <h2>produtos</h2>
-        <ConteinerProdutos>
-          {listaDeProdutos}
-        </ConteinerProdutos>
-        </Header>
-      );
-    }
+    return (
+      <Header>
+        <h2>produtos</h2>
+      <ConteinerProdutos>
+        {listaDeProdutos}
+      </ConteinerProdutos>
+      </Header>
+    );
+  }
 }

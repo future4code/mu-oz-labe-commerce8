@@ -19,7 +19,7 @@ export class Carrinho extends React.Component {
       
       return(
            <ProdutosCarrinho>
-             <p>1x</p>
+             <p>{carrinho.quantidade} </p>
              <p>{carrinho.nome}</p>
              <button>Remover</button>
            </ProdutosCarrinho>

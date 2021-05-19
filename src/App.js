@@ -57,6 +57,10 @@ const nossosProdutos = [
 
 class App extends React.Component {
   state = {
+
+    meuCarrinho: [],
+
+
     filtroMin: 100,
     filtroMax: 4000,
     filtroNome: 'Produto',
@@ -71,14 +75,45 @@ class App extends React.Component {
 
   onChangeFiltroNome = (event) => {
     this.setState({filtroNome: event.target.value})
+
   }
+
+  onClickAddCarrinho = (idDoProduto) => {
+    const procurarItem = this.state.meuCarrinho.find(produto => idDoProduto === produto.id)
+
+    if (procurarItem) {
+      const itemNoCarro = this.state.meuCarrinho.map (produto =>{
+        if (idDoProduto === produto.id) {
+          return {
+            ...produto,
+            quantidade: produto.quantidade + 1
+          }
+        }
+
+        return produto 
+      })
+
+      this.setState({meuCarrinho: itemNoCarro})
+
+    } else {
+      const addProduto = nossosProdutos.find(produto => idDoProduto === produto.id)
+
+      const itemNoCarro = [...this.state.meuCarrinho, {...addProduto, quantidade: 1}]
+
+      this.setState({meuCarrinho: itemNoCarro})
+    }
+    console.log(this.state.meuCarrinho)
+  }
+
 
   render() {
 
-
-
     return (
       <BodyApp>
+
+        <Filtro/>
+
+
         <Filtro
          filtroMin={this.state.filtroMin}
          filtroMax={this.state.filtroMax}
@@ -87,10 +122,14 @@ class App extends React.Component {
          onChangeFiltroMax={this.onChangeFiltroMax}            
          onChangeFiltroNome={this.onChangeFiltroNome}
         />
+
         <Produtos
-          produto={nossosProdutos}/>
+          produto={nossosProdutos}
+          onClickAddCarrinho={this.onClickAddCarrinho}
+          />
+
         <Carrinho
-          carrinho={nossosProdutos}/>
+          carrinho={this.state.meuCarrinho}/>
       </BodyApp>
     );
   }
