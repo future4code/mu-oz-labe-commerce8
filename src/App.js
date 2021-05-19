@@ -95,7 +95,7 @@ class App extends React.Component {
     } else {
       const addProduto = nossosProdutos.find(produto => idDoProduto === produto.id)
 
-      const itemNoCarro = [...this.state.meuCarrinho, {...addProduto, quantidade: 1}]
+      const itemNoCarro = [...this.state.meuCarrinho, {...addProduto}]
 
       this.setState({meuCarrinho: itemNoCarro})
     }
@@ -103,7 +103,7 @@ class App extends React.Component {
 
   onClickRemoveCarrinho = (idDoProduto) => {
     const itemNoCarro = this.state.meuCarrinho.map((carrinho) => {
-      if(nossosProdutos.id === idDoProduto) {
+      if(carrinho.id === idDoProduto) {
         return {
           ...carrinho,
           quantidade: carrinho.quantidade - 1
