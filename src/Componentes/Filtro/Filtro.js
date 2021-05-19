@@ -43,9 +43,30 @@ export class Filtro extends React.Component {
       if (this.state.filtrando) {
         componenteFiltro = (
           <FiltroAberto>
-            <ContainerInput>Valor minimo:<input type="number"/></ContainerInput>
-            <ContainerInput>Valor maximo:<input type="number"/></ContainerInput>
-            <ContainerInput>Busca por nome:<input type="text"/></ContainerInput>
+            <ContainerInput>
+              Valor minimo:
+              <input 
+                type="number"
+                value={this.props.filtroMin}
+                onChange={this.props.onChangeFiltroMin}
+              />
+            </ContainerInput>
+            <ContainerInput>
+              Valor maximo:
+              <input 
+                type="number"
+                value={this.props.filtroMax}
+                onChange={this.props.onChangeFiltroMax}
+              />
+            </ContainerInput>
+            <ContainerInput>
+              Busca por nome:
+              <input 
+                type="text"
+                value={this.props.filtroNome}
+                onChange={this.props.onChangeFiltroNome}
+              />
+            </ContainerInput>
           </FiltroAberto>
         )
           
