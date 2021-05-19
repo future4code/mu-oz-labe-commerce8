@@ -9,14 +9,6 @@ const BodyApp = styled.div`
   grid-template-columns: 3fr 1fr;
   padding: 10px;
 `
-const produtos = [
-  {
-    id: 1,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
-    imageUrl: "https://picsum.photos/200/200",
-  }
-]
 
 const nossosProdutos = [
   {
@@ -64,20 +56,52 @@ const nossosProdutos = [
 ]
 
 class App extends React.Component {
-  
+  state = {
+    meuCarrinho: [],
+
+  }
+
+  onClickAddCarrinho = (idDoProduto) => {
+    const procurarItem = this.state.meuCarrinho.find(produto => idDoProduto === produto.id)
+
+    if (procurarItem) {
+      const itemNoCarro = this.state.meuCarrinho.map (produto =>{
+        if (idDoProduto === produto.id) {
+          return {
+            ...produto,
+            quantidade: produto.quantidade + 1
+          }
+        }
+
+        return produto 
+      })
+
+      this.setState({meuCarrinho: itemNoCarro})
+
+    } else {
+      const addProduto = nossosProdutos.find(produto => idDoProduto === produto.id)
+
+      const itemNoCarro = [...this.state.meuCarrinho, {...addProduto, quantidade: 1}]
+
+      this.setState({meuCarrinho: itemNoCarro})
+    }
+    console.log(this.state.meuCarrinho)
+  }
 
 
   render() {
 
-
-
     return (
       <BodyApp>
         <Filtro/>
+
         <Produtos
-          produto={nossosProdutos}/>
+          produto={nossosProdutos}
+          onClickAddCarrinho={this.onClickAddCarrinho}
+          />
+
         <Carrinho
-          carrinho={nossosProdutos}/>
+          carrinho={this.state.meuCarrinho}/>
       </BodyApp>
     );
   }
