@@ -99,7 +99,20 @@ class App extends React.Component {
 
       this.setState({meuCarrinho: itemNoCarro})
     }
-    console.log(this.state.meuCarrinho)
+  }
+
+  onClickRemoveCarrinho = (idDoProduto) => {
+    const itemNoCarro = this.state.meuCarrinho.map((carrinho) => {
+      if(nossosProdutos.id === idDoProduto) {
+        return {
+          ...carrinho,
+          quantidade: carrinho.quantidade - 1
+        }
+      }
+      return carrinho
+    }).filter((carrinho) => carrinho.quantidade > 0)
+
+    this.setState({meuCarrinho: itemNoCarro})
   }
 
 
@@ -122,7 +135,8 @@ class App extends React.Component {
           />
 
         <Carrinho
-          carrinho={this.state.meuCarrinho}/>
+          carrinho={this.state.meuCarrinho}
+          onClickRemoveCarrinho={this.onClickRemoveCarrinho}/>
       </BodyApp>
     );
   }
