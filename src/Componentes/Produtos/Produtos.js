@@ -35,30 +35,49 @@ const Footer = styled.div`
 `
 
 export class Produtos extends React.Component {
+  state = {
+    ordernar: 'Decrescente',
+  }
+
+  ordernarEFiltrarLista = () => {
+    return this.props.produtos
+    .filter((produto) => this.props.filtroMax ? produto.preco < this.props.filtroMax : true)
+    .filter((produto) => this.props.filtroMin ? produto.preco > this.props.filtroMin : true)
+    .filter((produto) => this.props.filtroNome ? produto.nome.includes(this.props.filtroNome) : true)
+    .sort((a, b) => this.state.ordernar === 'Crescente' ? a.preco - b.preco : b.preco - a.preco)
+  }
+
+  onChangeOrdernar= (e) => {
+    this.setState({ordernar: e.target.value})
+  }
 
   render() {
+    const listaFiltradaEOrdenada = this.ordernarEFiltrarLista()
 
-    const listaDeProdutos = this.props.produto.map((produto) =>{
-      return(
-        <ContaierInterno>
-            <Header>
-              <h4>{produto.nome}</h4>
-            </Header>
-            <ProdutoFoto src={produto.foto} alt="Imagem do produto"/>
-            <Footer>
-              <p>R$: {produto.preco}</p>
-              <button onClick={() => this.props.onClickAddCarrinho(produto.id)}>Adicionar ao Carrinho</button>
-            </Footer>
-        </ContaierInterno>
-        )
-      })
-      
 
     return (
       <Header>
         <h2>produtos</h2>
+        <h5>Ordernar:</h5>
+        <select value={this.state.ordernar} onChange={this.onChangeOrdernar}>
+          <option value={'Crescente'}>Crescente</option>
+          <option value={'Decrescente'}>Decrescente</option>
+        </select>  
       <ConteinerProdutos>
-        {listaDeProdutos}
+        
+      {listaFiltradaEOrdenada.map((produtos) =>{
+        return <ContaierInterno>
+            <Header>
+              <h4>{produtos.nome}</h4>
+            </Header>
+            <ProdutoFoto src={produtos.foto} alt="Imagem do produto"/>
+            <Footer>
+              <p>R$: {produtos.preco}</p>
+              <button onClick={() => this.props.onClickAddCarrinho(produtos.id)}>Adicionar ao Carrinho</button>
+            </Footer>
+        </ContaierInterno>
+      })}
+
       </ConteinerProdutos>
       </Header>
     );
