@@ -63,7 +63,6 @@ export class Filtro extends React.Component {
               Busca por nome:
               <input 
                 type="text"
-                value={this.props.filtroNome}
                 onChange={this.props.onChangeFiltroNome}
               />
             </ContainerInput>

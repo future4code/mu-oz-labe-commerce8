@@ -43,7 +43,7 @@ export class Produtos extends React.Component {
     return this.props.produtos
     .filter((produto) => this.props.filtroMax ? produto.preco <= this.props.filtroMax : true)
     .filter((produto) => this.props.filtroMin ? produto.preco >= this.props.filtroMin : true)
-    .filter((produto) => this.props.filtroNome ? produto.nome.includes(this.props.filtroNome) : true)
+    .filter((produto) => this.props.filtroNome ? produto.nome.toLowerCase().includes(this.props.filtroNome) : true)
     .sort((a, b) => this.state.ordernar === 'Crescente' ? a.preco - b.preco : b.preco - a.preco)
   }
 

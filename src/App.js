@@ -72,7 +72,7 @@ class App extends React.Component {
   }
 
   onChangeFiltroNome = (event) => {
-    this.setState({filtroNome: event.target.value})
+    this.setState({filtroNome: event.target.value.toLowerCase()})
   }
 
   onClickAddCarrinho = (idDoProduto) => {
