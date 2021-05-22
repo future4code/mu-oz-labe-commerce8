@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import filter_icon from '../../img/filter_icon.svg'
 
 const ConteinerFiltro = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    grid-column: 1/-1;
-    border: 2px solid black;
-    padding: 10px;
-    margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-column: 1/-1;
+  background-color: #BE001B;
+  font-weight: bold;
+  height: 8vh;
 `
 const FiltroAberto = styled.div`
   display: flex;
