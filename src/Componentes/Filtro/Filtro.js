@@ -21,6 +21,10 @@ const IconImage = styled.img`
   height: 25px;
   width: auto;
 `
+const InputsFiltro = styled.input`
+  margin-right: 2vh;
+  margin-left: 1vh;
+`
 const ContainerInput = styled.label`
   display: flex;
   flex-direction: row;
@@ -44,8 +48,16 @@ export class Filtro extends React.Component {
         componenteFiltro = (
           <FiltroAberto>
             <ContainerInput>
+              Busca por nome:
+              <InputsFiltro 
+                type="text"
+                value={this.props.filtroNome}
+                onChange={this.props.onChangeFiltroNome}
+              />
+            </ContainerInput>
+            <ContainerInput>
               Valor minimo:
-              <input 
+              <InputsFiltro 
                 type="number"
                 value={this.props.filtroMin}
                 onChange={this.props.onChangeFiltroMin}
@@ -53,18 +65,10 @@ export class Filtro extends React.Component {
             </ContainerInput>
             <ContainerInput>
               Valor maximo:
-              <input 
+              <InputsFiltro 
                 type="number"
                 value={this.props.filtroMax}
                 onChange={this.props.onChangeFiltroMax}
-              />
-            </ContainerInput>
-            <ContainerInput>
-              Busca por nome:
-              <input 
-                type="text"
-                value={this.props.filtroNome}
-                onChange={this.props.onChangeFiltroNome}
               />
             </ContainerInput>
           </FiltroAberto>

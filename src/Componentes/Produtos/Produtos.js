@@ -1,6 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const ConteinerCabecario = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 2px;
+    
+`
+const ContainerOrdernar = styled.label`
+  display: flex;
+  align-items: center;
+  padding: 1vh;
+`
+const Containerh5 = styled.h5`
+  padding: 1vh;
+`
+
 const ConteinerProdutos = styled.div`
     display: flex;
     align-items: center;
@@ -43,7 +58,7 @@ export class Produtos extends React.Component {
     return this.props.produtos
     .filter((produto) => this.props.filtroMax ? produto.preco < this.props.filtroMax : true)
     .filter((produto) => this.props.filtroMin ? produto.preco > this.props.filtroMin : true)
-    .filter((produto) => this.props.filtroNome ? produto.nome.includes(this.props.filtroNome) : true)
+    .filter((produto) => this.props.filtroNome ? produto.nome.toLowerCase().includes(this.props.filtroNome) : true)
     .sort((a, b) => this.state.ordernar === 'Crescente' ? a.preco - b.preco : b.preco - a.preco)
   }
 
@@ -57,12 +72,17 @@ export class Produtos extends React.Component {
 
     return (
       <Header>
-        <h2>produtos</h2>
-        <h5>Ordernar:</h5>
-        <select value={this.state.ordernar} onChange={this.onChangeOrdernar}>
-          <option value={'Crescente'}>Crescente</option>
-          <option value={'Decrescente'}>Decrescente</option>
-        </select>  
+        <ConteinerCabecario>
+          <div></div>          
+          <h2>Produtos</h2>
+          <ContainerOrdernar>
+            <Containerh5>Ordernar:</Containerh5>
+            <select value={this.state.ordernar} onChange={this.onChangeOrdernar}>
+              <option value={'Crescente'}>Crescente</option>
+              <option value={'Decrescente'}>Decrescente</option>
+            </select>
+          </ContainerOrdernar>  
+        </ConteinerCabecario>  
       <ConteinerProdutos>
         
       {listaFiltradaEOrdenada.map((produtos) =>{
