@@ -4,18 +4,27 @@ import styled from 'styled-components';
 const ContainerCarrinho = styled.div`
   border: 1px solid black;
   padding: 15px;
-  background-color: #15418C;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 310px;
+  background-image: url("https://www.crushpixel.com/big-static15/preview4/cute-space-seamless-pattern-colorful-2121905.jpg")
 `
 const ProdutosCarrinho = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  background-color: #15418C;
+  background-size: cover;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7VVMbF2C4jaH6Fwr-zYQI_zmNi_eUgCxxg&usqp=CAU")
 `
 const ContainerValorTotal = styled.div`
   padding: 5px;
   font-size: 16px;
-`
+  background-color: #15418C;
+  background-size: cover;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI7VVMbF2C4jaH6Fwr-zYQI_zmNi_eUgCxxg&usqp=CAU")
+`  
 
 export class Carrinho extends React.Component {
   recebeValorTotal = () => {
@@ -40,13 +49,15 @@ export class Carrinho extends React.Component {
     })
     return(
       <ContainerCarrinho>
-        <h2>Carrinho:</h2>
-      <div>
-        {CarrinhoDeCompras}
-      </div>
-      <ContainerValorTotal>
-      <p>Valor total: R${this.recebeValorTotal()},00</p>
-      </ContainerValorTotal>
+        <ContainerValorTotal>
+          <h2>Carrinho:</h2>
+        </ContainerValorTotal>
+        <div>
+          {CarrinhoDeCompras}
+        </div>
+        <ContainerValorTotal>
+          <p>Valor total: R${this.recebeValorTotal()},00</p>
+        </ContainerValorTotal>
       </ContainerCarrinho>
     )
   }
