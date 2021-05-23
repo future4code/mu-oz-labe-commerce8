@@ -49,9 +49,7 @@ export class Carrinho extends React.Component {
     })
     return(
       <ContainerCarrinho>
-        <ContainerValorTotal>
           <h2>Carrinho:</h2>
-        </ContainerValorTotal>
         <div>
           {CarrinhoDeCompras}
         </div>
