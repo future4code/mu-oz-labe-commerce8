@@ -91,6 +91,20 @@ class App extends React.Component {
     filtroNome: '',
   }
 
+  componentDidUpdate() {
+    localStorage.setItem("Compras", JSON.stringify(this.state.meuCarrinho))
+  };
+
+  componentDidMount() {
+    if(localStorage.getItem("Compras")){
+    const carrinhoString = localStorage.getItem("Compras")
+
+    const carrinhoObjeto = JSON.parse(carrinhoString)
+
+    this.setState({meuCarrinho: carrinhoObjeto})
+    }
+  };
+
   onChangeFiltroMin = (event) => {
     this.setState({filtroMin: event.target.value})
   }
