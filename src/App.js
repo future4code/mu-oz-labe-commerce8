@@ -85,7 +85,7 @@ const nossosProdutos = [
 
 class App extends React.Component {
   state = {
-    meuCarrinho: ['a',],
+    meuCarrinho: [],
     filtroMin: 0,
     filtroMax: 0,
     filtroNome: '',
