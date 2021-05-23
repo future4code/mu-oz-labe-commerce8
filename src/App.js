@@ -3,6 +3,7 @@ import {Carrinho} from './Componentes/Carrinho/Carrinho.js';
 import {Produtos} from './Componentes/Produtos/Produtos.js';
 import {Filtro} from './Componentes/Filtro/Filtro.js';
 import styled from 'styled-components';
+import meteoro from './img/meteoro.png'
 
 const BodyApp = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -16,7 +17,16 @@ const BodyApp = styled.div`
   color: white;
   background-image: url("https://wallpaperaccess.com/full/983279.jpg");
 `
-
+const ImageMeteoro = styled.img`
+	margin-right: 2vh;
+  height: 100px;
+  width: auto;
+`
+const ConteinerTitulo = styled.div`
+  display: flex;
+  grid-column: 1/-1;
+  justify-content: center;
+`
 const nossosProdutos = [
   {
     nome: 'Pedaço de Meteorito - Palasita',
@@ -162,6 +172,10 @@ class App extends React.Component {
 
     return (
       <BodyApp>
+        <ConteinerTitulo>
+          <h1>NasaCommerce</h1>
+          <ImageMeteoro src={meteoro}/>
+        </ConteinerTitulo>
         <Filtro
          filtroMin={this.state.filtroMin}
          filtroMax={this.state.filtroMax}
