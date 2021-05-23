@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 const ConteinerProdutos = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-content: space-around;
   overflow-y: scroll;
   padding: 2px;
-  flex-wrap: wrap;
   max-height: 100vh;
+  
 `
 const ConteinerOrdenar = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ const ConteinerOrdenar = styled.div`
 `
 const ContaierInterno = styled.div`
   border: 1px solid white;
+  background-color: rgb(39, 39, 39);
   width: 300px;
   height: 400px;
   margin: 5px;
@@ -25,6 +26,9 @@ const ContaierInterno = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-size: cover;
+  color: White;
+  background-image: url("https://www.wowpatterns.com/assets/files/resource_images/meteor-shower-seamless-space-vector-pattern.jpg");
 `
 const ProdutoFoto = styled.img`
   width: 200px;
